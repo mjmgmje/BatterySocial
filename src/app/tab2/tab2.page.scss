@@ -1,1 +1,33 @@
+.button-l {
+  width: 38%;
+  height: 55%;
+  position: fixed;
+}
 
+.button-s{
+    width: 46%;
+    height: 35%;
+    position: fixed;
+}
+
+.NW {
+  margin-top: 5%;
+  margin-left: 5%;
+  top: 0;
+  left: 0;
+}
+.NE {
+  margin-top: 5%;
+  top: 0;
+  left: 46%;
+}
+.SW {
+  margin-left: 5%;
+
+  top: 60%;
+  left: 0;
+}
+.SE {
+  top: 40%;
+  left: 54%;
+}

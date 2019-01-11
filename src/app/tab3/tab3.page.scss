@@ -1,1 +1,25 @@
+.ProfileSettings{
+    height: 10%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
+.Profile{
+    height:15%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.PointsTitle{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 6%;
+}
+
+.medium-size {
+    font-size: 30px; //Preferred size here
+}
