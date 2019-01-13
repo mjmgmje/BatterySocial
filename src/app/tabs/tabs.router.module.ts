@@ -18,6 +18,42 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'conciertos',
+        children: [
+          {
+            path: '',
+            loadChildren: './../conciertos/conciertos.module#ConciertosPageModule'
+          }
+        ]
+      },
+      {
+        path: 'actividades',
+        children: [
+          {
+            path: '',
+            loadChildren: './../actividades/actividades.module#ActividadesPageModule'
+          }
+        ]
+      },
+      {
+        path: 'club-lectura',
+        children: [
+          {
+            path: '',
+            loadChildren: './../club-lectura/club-lectura.module#ClubLecturaPageModule'
+          }
+        ]
+      },
+      {
+        path: 'bar-info',
+        children: [
+          {
+            path: '',
+            loadChildren: './../bar-info/bar-info.module#BarInfoPageModule'          }
+        ]
+      },
+
+      {
         path: 'tab2',
         children: [
           {
@@ -34,7 +70,9 @@ const routes: Routes = [
             loadChildren: '../tab3/tab3.module#Tab3PageModule'
           }
         ]
-      }]}
+      }
+    ]
+  }
   //     ,{
   //       path: '',
   //       redirectTo: '/tabs/tab1',
