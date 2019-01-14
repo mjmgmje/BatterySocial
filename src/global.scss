@@ -13,12 +13,13 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 
-colors {
-  yellow: #ffd11a;
-  black: #262626;
-  grey: #b3b3b3;
-  blue: #75c4fd;
-}
+$colors: (
+  yellow: #ffd11a,
+  black: #262626,
+  grey: #b3b3b3,
+  blue: #75c4fd,
+);
+
 .primary-bg {
   background-color: #ffd11a !important;
 }

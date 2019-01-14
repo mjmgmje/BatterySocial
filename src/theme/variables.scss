@@ -3,9 +3,17 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
+
+  $colors: (
+  yellow: #ffd11a,
+  black: #262626,
+  grey: #b3b3b3,
+  blue: #75c4fd,
+);
+
   --ion-color-primary: #ffd11a;
   --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast: #000000;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;

@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  private toolbarColor: string;
   notices = [
     {
       id: 1,
@@ -13,11 +14,13 @@ export class Tab1Page {
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
       name: 'noticia',
       description: 'descripcion de la noticia',
-      time: '2d',
+      time: '2d'
     }
   ];
 
-  constructor() {}
+  constructor() {
+    this.toolbarColor = 'yellow';
+  }
 
   viewDetail(id: number) {}
 }

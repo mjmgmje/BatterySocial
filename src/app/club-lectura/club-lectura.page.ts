@@ -12,70 +12,70 @@ export class ClubLecturaPage implements OnInit {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     }, {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     },
     {
       id: 1,
       thumb:
         'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
+      name: 'libreta',
+      description: 'descripcion de la libreta',
     }
   ];
 
