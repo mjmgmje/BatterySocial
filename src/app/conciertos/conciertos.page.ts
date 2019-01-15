@@ -76,6 +76,7 @@ export class ConciertosPage implements OnInit, OnChanges {
   selectDate(date: CalendarDate): void {
     this.onSelectDate.emit(date);
     console.log('selected');
+    console.log(date);
   }
 
   // actions from calendar
