@@ -11,6 +11,7 @@
 @import '~@ionic/angular/css/flex-utils.css';
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 
 $colors: (
@@ -28,6 +29,14 @@ $colors: (
 }
 .grey-bg {
   background-color: #b3b3b3;
+}
+
+.light-blue-bg{
+  background-color: #E5F3FF;
+}
+
+.darker-blue-bg{
+  background-color: #D1EAFF;
 }
 
 .secondary-bg {
