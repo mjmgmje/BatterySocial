@@ -1,138 +1,72 @@
 import {
   Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  SimpleChanges,
-  OnChanges,
+  OnInit
 } from '@angular/core';
 import * as moment from 'moment';
-import * as _ from 'lodash';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 
-export interface CalendarDate {
-  mDate: moment.Moment;
-  selected?: boolean;
-  today?: boolean;
-}
 
+const colors: any = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3'
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF'
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA'
+  }
+};
 @Component({
   selector: 'app-conciertos',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './conciertos.page.html',
   styleUrls: ['./conciertos.page.scss']
 })
-export class ConciertosPage implements OnInit, OnChanges {
+export class ConciertosPage implements OnInit {
+  eventSource = [{
+    id: 1,
+    title: 'Concierto Carismos',
+    startTime: new Date('2019-01-17T17:00:00'),
+    endTime: new Date('2019-01-17T18:00:00'),
+    allDay: false,
+  },
+];
+  viewTitle: string;
+  selectedDay = new Date();
 
-  currentDate = moment();
+  calendar = {
+    mode: 'month',
+    currentDate: new Date()
+  };
 
-  dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-
-  weeks: CalendarDate[][] = [];
-  sortedDates: CalendarDate[] = [];
-
-  @Input() selectedDates: CalendarDate[] = [];
-  // tslint:disable-next-line:no-output-on-prefix
-  @Output() onSelectDate = new EventEmitter<CalendarDate>();
+  constructor(
+    public navCtrl: NavController,
+    // private modalCtrl: ModalController,
+    // private alertCtrl: AlertController
+  ) {}
 
 
-  events = [
-    {
-      start: moment().add(3, 'days').calendar(),
-      title: 'prueba',
-      color: '#000000'
-    }
-  ];
-
-  constructor() {}
-
-  ngOnInit() {
-    this.generateCalendar();
+  onViewTitleChanged(title) {
+    this.viewTitle = title;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.selectedDates &&
-        changes.selectedDates.currentValue &&
-        changes.selectedDates.currentValue.length  > 1) {
-      // sort on date changes for better performance when range checking
-      this.sortedDates = _.sortBy(changes.selectedDates.currentValue, (m: CalendarDate) => m.mDate.valueOf());
-      this.generateCalendar();
-    }
-  }
-  isToday(date: moment.Moment): boolean {
-    return moment().isSame(moment(date), 'day');
-  }
+  onEventSelected(event) {
+    const start = moment(event.startTime).format('LLLL');
+    const end = moment(event.endTime).format('LLLL');
 
-  isSelected(date: moment.Moment): boolean {
-    return _.findIndex(this.selectedDates, (selectedDate) => {
-      return moment(date).isSame(selectedDate.mDate, 'day');
-    }) > -1;
+    // const alert = this.alertCtrl.create({
+    //   title: '' + event.title,
+    //   subTitle: 'From: ' + start + '<br>To: ' + end,
+    //   buttons: ['OK']
+    // });
+    // alert.present();
   }
 
-  isSelectedMonth(date: moment.Moment): boolean {
-    return moment(date).isSame(this.currentDate, 'month');
+  onTimeSelected(ev) {
+    this.selectedDay = ev.selectedTime;
   }
-
-  selectDate(date: CalendarDate): void {
-    this.onSelectDate.emit(date);
-    console.log('selected');
-  }
-
-  // actions from calendar
-
-  prevMonth(): void {
-    this.currentDate = moment(this.currentDate).subtract(1, 'months');
-    this.generateCalendar();
-  }
-
-  nextMonth(): void {
-    this.currentDate = moment(this.currentDate).add(1, 'months');
-    this.generateCalendar();
-  }
-
-  firstMonth(): void {
-    this.currentDate = moment(this.currentDate).startOf('year');
-    this.generateCalendar();
-  }
-
-  lastMonth(): void {
-    this.currentDate = moment(this.currentDate).endOf('year');
-    this.generateCalendar();
-  }
-
-  prevYear(): void {
-    this.currentDate = moment(this.currentDate).subtract(1, 'year');
-    this.generateCalendar();
-  }
-
-  nextYear(): void {
-    this.currentDate = moment(this.currentDate).add(1, 'year');
-    this.generateCalendar();
-  }
-
-  // generate the calendar grid
-
-  generateCalendar(): void {
-    const dates = this.fillDates(this.currentDate);
-    const weeks: CalendarDate[][] = [];
-    while (dates.length > 0) {
-      weeks.push(dates.splice(0, 7));
-    }
-    this.weeks = weeks;
-  }
-
-  fillDates(currentMoment: moment.Moment): CalendarDate[] {
-    const firstOfMonth = moment(currentMoment).startOf('month').day();
-    const firstDayOfGrid = moment(currentMoment).startOf('month').subtract(firstOfMonth, 'days');
-    const start = firstDayOfGrid.date();
-    return _.range(start, start + 42)
-            .map((date: number): CalendarDate => {
-              const d = moment(firstDayOfGrid).date(date);
-              return {
-                today: this.isToday(d),
-                selected: this.isSelected(d),
-                mDate: d,
-              };
-            });
-  }
+  ngOnInit(): void {}
 }

@@ -6,40 +6,22 @@
   <div class="headerConciertos light-bg">
     <ion-text class="text-white"> Conciertos </ion-text>
   </div>
-  <div class="calendar light-blue-bg rounded-bottom">
-    <div class="calendar-navs">
-      <div class="month-nav">
-        <button class ="light-blue-bg"(click)="prevMonth()"><ion-icon class="medium-size" name="arrow-dropleft-circle"></ion-icon></button>
-        <span class="p4 font-weight-bold">{{ currentDate.format('MMMM') }}</span>
-        <button class ="light-blue-bg" (click)="nextMonth()"><ion-icon class="medium-size" name="arrow-dropright-circle"></ion-icon></button>
-      </div>
-      <div class="year-nav">
-        <button  class ="light-blue-bg" (click)="prevYear()"><ion-icon class="medium-size" name="arrow-dropleft-circle"></ion-icon></button>
-        <span class="font-weight-bold">{{ currentDate.format('YYYY') }}</span>
-        <button class ="light-blue-bg" (click)="nextYear()"><ion-icon class="medium-size" name="arrow-dropright-circle"></ion-icon></button>
-      </div>
-    </div>
-    <div class="month-grid rounded-bottom">
-      <div class="day-names darker-blue-bg">
-        <div *ngFor="let name of dayNames" class="day-name p9" >
-          {{ name }}
-        </div>
-      </div>
-      <div class="weeks rounded-bottom">
-        <div *ngFor="let week of weeks" class="week">
-          <ng-container *ngFor="let day of week">
-            <div class="week-date disabled darker-blue-bg" *ngIf="!isSelectedMonth(day.mDate)">
-              <span class="date-text">{{ day.mDate.date() }}</span>
-            </div>
-            <div class="week-date enabled"
-                 *ngIf="isSelectedMonth(day.mDate)"
-                 (click)="selectDate(day)"
-                 [ngClass]="{ today: day.today, selected: day.selected }">
-              <span class="date-text">{{ day.mDate.date() }}</span>
-            </div>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- <mwl-calendar-month-view
+  [viewDate]="viewDate"
+  [events]="events"
+  [refresh]="refresh"
+  [activeDayIsOpen]="activeDayIsOpen"
+  (dayClicked)="dayClicked($event.day)"
+  (eventClicked)="handleEvent('Clicked', $event.event)"
+  (eventTimesChanged)="eventTimesChanged($event)">
+</mwl-calendar-month-view> -->
+<calendar [eventSource]="eventSource"
+        [calendarMode]="calendar.mode"
+        [currentDate]="calendar.currentDate"
+        (onEventSelected)="onEventSelected($event)"
+        (onTitleChanged)="onViewTitleChanged($event)"
+        (onTimeSelected)="onTimeSelected($event)"
+        step="30"
+        class="calendar">
+      </calendar>
 </ion-content>
