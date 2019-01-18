@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  private toolbarColor: string;
   notices = [
     {
       id: 1,
@@ -19,7 +18,6 @@ export class Tab1Page {
   ];
 
   constructor() {
-    this.toolbarColor = 'yellow';
   }
 
   viewDetail(id: number) {}
