@@ -1,14 +1,15 @@
 <ion-header >
   <ion-toolbar color="primary">
-    <ion-title>
-      Tab One
+    <ion-title class="text-center">
+      Noticias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="notices detail-bg">
   <!--list of trips-->
-  <div class="notice card" *ngFor="let notice of notices" tappable (click)="viewDetail(notice.id)" margin-bottom>
+  <ul [@listStagger]="notices">
+      <li  class="notice card" *ngFor="let notice of notices" tappable (click)="viewDetail(notice.id)" margin-bottom>
     <div class="background border-bottom" [ngStyle]="{'background-image': 'url(' + notice.thumb + ')'}">
       <div class="background-filter rlt">
         <div class="align-bottom" padding-left padding-right>
@@ -23,5 +24,6 @@
       <ion-text class="text-white">{{ notice.time }}</ion-text>
       <ion-text class="pull-right text-white" color="light">{{notice.description}}</ion-text>
     </div>
-  </div>
+  </li>
+  </ul>
 </ion-content>

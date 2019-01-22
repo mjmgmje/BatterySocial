@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        text="Back"
+        icon="ios-arrow-back"
+        color="primary"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-center">{{ conciertoToShow.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<img src="{{ conciertoToShow.photo }}" height="45%" width="100%" />
+<div>
+  <h4 class="text-center">{{ conciertoToShow.title }}</h4>
+  <br />
+  <h6 class="pad">
+    Hora: {{ conciertoToShow.startTime }} - {{ conciertoToShow.endTime }}
+  </h6>
+</div>
+<br />
+<ion-content padding> </ion-content>

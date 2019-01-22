@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="text-center">{{ libroToShow.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img
+    class="img-center"
+    src="{{ libroToShow.thumb }}"
+    height="50%"
+    width="50%"
+  />
+  <h4 class="text-center">{{ libroToShow.name }}</h4>
+  <div>{{ libroToShow.description }}</div>
+  <hr>
+  <br>
+  <h5 class="text-center">Comentarios</h5>
+  <div class="text-muted" *ngFor="let comment of libroToShow.comments, let last = last">
+    <small> {{ comment.nombre }}: {{ comment.comment }}</small>
+    <hr *ngIf="!last"/>
+  </div>
+</ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-club-lectura',
@@ -79,10 +80,13 @@ export class ClubLecturaPage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
-  viewDetail() {}
+  viewDetail(id: number) {
+    this.router.navigate(['dashboard/tabs/libroDetail/' + id]);
+
+  }
 
 }

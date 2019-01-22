@@ -70,6 +70,51 @@ const routes: Routes = [
             loadChildren: '../tab3/tab3.module#Tab3PageModule'
           }
         ]
+      },
+      {
+        path: 'tab3',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+          }
+        ]
+      },
+      {
+        path: 'productDetail/:paramId',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab1/new-detail/new-detail.module#NewDetailPageModule'
+          }
+        ]
+      },
+      {
+        path: 'conciertoDetail/:paramId',
+        children: [
+          {
+            path: '',
+            loadChildren: '../conciertos/concierto-detail/concierto-detail.module#ConciertoDetailPageModule'
+          }
+        ]
+      },
+      {
+        path: 'actividadDetail/:paramId',
+        children: [
+          {
+            path: '',
+            loadChildren: '../actividades/actividad-detail/actividad-detail.module#ActividadDetailPageModule'
+          }
+        ]
+      },
+      {
+        path: 'libroDetail/:paramId',
+        children: [
+          {
+            path: '',
+            loadChildren: '../club-lectura/libro-detail/libro-detail.module#LibroDetailPageModule'
+          }
+        ]
       }
     ]
   }
