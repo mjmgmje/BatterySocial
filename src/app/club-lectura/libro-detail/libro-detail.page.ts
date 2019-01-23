@@ -18,10 +18,10 @@ export class LibroDetailPage implements OnInit {
       // tslint:disable-next-line:max-line-length
       description: 'descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta',
       comments: [
-        {nombre: 'Maria' , comment: 'una maravilla' },
-        {nombre: 'Luisa' , comment: 'Gran libro' },
-        {nombre: 'Fernando' , comment: 'no me termino de convencer' },
-        {nombre: 'Raul' , comment: 'Muy divertido' },
+        {nombre: 'Maria' , comment: 'una maravilla', photo: 'https://www.w3schools.com/howto/img_avatar.png'},
+        {nombre: 'Luisa' , comment: 'Gran libro', photo: 'https://www.w3schools.com/howto/img_avatar2.png' },
+        {nombre: 'Fernando' , comment: 'no me termino de convencer', photo: 'https://www.w3schools.com/w3images/avatar2.png' },
+        {nombre: 'Raul' , comment: 'Muy divertido', photo: 'https://www.w3schools.com/w3images/avatar6.png' },
       ]
     },
   ];

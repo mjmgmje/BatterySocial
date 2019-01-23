@@ -59,7 +59,6 @@ export class ConciertosPage implements OnInit {
   onViewTitleChanged(title) {
     moment.locale('es');
     this.viewTitle = title;
-    console.log(this.viewTitle);
   }
 
   onEventSelected(event) {
