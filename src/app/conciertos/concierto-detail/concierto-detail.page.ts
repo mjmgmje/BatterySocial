@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-concierto-detail',
@@ -9,23 +11,21 @@ import * as moment from 'moment';
 })
 export class ConciertoDetailPage implements OnInit {
   conciertoToShow: any;
-  eventSource = [{
-    id: 1,
-    title: 'Concierto Carismos',
-    startTime: new Date('2019-01-17T17:00:00'),
-    endTime: new Date('2019-01-17T18:00:00'),
-    photo: 'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-    allDay: false,
-  },
-];
+  start: string;
+  end: string;
+  eventSource = environment.eventSource;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    this.conciertoToShow = this.eventSource[0];
-    moment.locale('es');
-    this.conciertoToShow.startTime = moment(this.conciertoToShow.startTime).format('lll');
-    this.conciertoToShow.endTime = moment(this.conciertoToShow.endTime).format('lll');
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const param1 = String(params.get('paramId'));
+      this.firebaseService.getConcert(param1).subscribe(data => {
+        this.conciertoToShow = data;
+        this.start = moment(new Date(this.conciertoToShow.startTime.seconds * 1000)).format('lll');
+        this.end = moment(new Date(this.conciertoToShow.endTime.seconds * 1000)).format('lll');
+      });
+    });
   }
 
 }

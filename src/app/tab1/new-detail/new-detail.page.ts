@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-new-detail',
@@ -9,28 +11,16 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class NewDetailPage implements OnInit {
 
   NewToShow: any;
-  news = [
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d',
-      // tslint:disable-next-line:max-line-length
-      new: 'La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que La noticia es que',
-    },
-  ];
+  news = environment.news;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    this.NewToShow = this.news[0];
-    // this.route.paramMap.subscribe((params: ParamMap) => {
-    //   const param1 = String(params.get('paramId'));
-    //   this.DbService.getNewById(param1).subscribe(new =>
-    //     this.NewToShow = new
-    //   );
-    // });
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const param1 = String(params.get('paramId'));
+      this.firebaseService.getnew(param1).subscribe(New =>
+        this.NewToShow = New
+      );
+    });
   }
 }

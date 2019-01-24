@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from '../services/firebase.service';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'app-club-lectura',
@@ -8,81 +11,13 @@ import { Router } from '@angular/router';
 })
 export class ClubLecturaPage implements OnInit {
 
-  books = [
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    }, {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      description: 'descripcion de la libreta',
-    }
-  ];
+  books: Array<Book>;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    this.firebaseService.getBooks().subscribe(data =>
+      this.books = data);
   }
   viewDetail(id: number) {
     this.router.navigate(['dashboard/tabs/libroDetail/' + id]);

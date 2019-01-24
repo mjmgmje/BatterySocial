@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-libro-detail',
@@ -9,27 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 export class LibroDetailPage implements OnInit {
 
   libroToShow: any;
-  books = [
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'libreta',
-      // tslint:disable-next-line:max-line-length
-      description: 'descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta descripcion de la libreta',
-      comments: [
-        {nombre: 'Maria' , comment: 'una maravilla', photo: 'https://www.w3schools.com/howto/img_avatar.png'},
-        {nombre: 'Luisa' , comment: 'Gran libro', photo: 'https://www.w3schools.com/howto/img_avatar2.png' },
-        {nombre: 'Fernando' , comment: 'no me termino de convencer', photo: 'https://www.w3schools.com/w3images/avatar2.png' },
-        {nombre: 'Raul' , comment: 'Muy divertido', photo: 'https://www.w3schools.com/w3images/avatar6.png' },
-      ]
-    },
-  ];
-  constructor(private route: ActivatedRoute) { }
+  books = environment.books;
+
+  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    this.libroToShow = this.books[0];
-
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const param1 = String(params.get('paramId'));
+      this.firebaseService.getbook(param1).subscribe(data =>
+        this.libroToShow = data);
+    });
   }
 
 }

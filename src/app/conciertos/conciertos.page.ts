@@ -5,6 +5,9 @@ import {
 import * as moment from 'moment';
 import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from '../services/firebase.service';
+
 
 
 const colors: any = {
@@ -27,15 +30,8 @@ const colors: any = {
   styleUrls: ['./conciertos.page.scss']
 })
 export class ConciertosPage implements OnInit {
-  eventSource = [{
-    id: 1,
-    title: 'Concierto Carismos',
-    startTime: new Date('2019-01-17T17:00:00'),
-    endTime: new Date('2019-01-17T18:00:00'),
-    photo: 'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-    allDay: false,
-  },
-];
+  eventSource = [];
+
   eventSelected: any;
   viewTitle: string;
   selectedDay = new Date();
@@ -47,11 +43,19 @@ export class ConciertosPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    private router: Router
+    private router: Router,
+    private firebaseService: FirebaseService
     // private modalCtrl: ModalController,
     // private alertCtrl: AlertController
   ) {
     moment.locale('es');
+    this.firebaseService.getConcerts().subscribe(data => {
+    data.forEach(elem => {
+        elem.startTime = new Date(elem.startTime.seconds * 1000);
+        elem.endTime = new Date(elem.endTime.seconds * 1000);
+      });
+    this.eventSource = data;
+    });
 
   }
 
@@ -62,6 +66,8 @@ export class ConciertosPage implements OnInit {
   }
 
   onEventSelected(event) {
+
+
     moment.locale('es');
     const start = moment(event.startTime).format('LLLL');
     const end = moment(event.endTime).format('LLLL');
@@ -82,6 +88,8 @@ export class ConciertosPage implements OnInit {
 
   }
   ngOnInit(): void {
-    moment.locale('es');
+    // this.eventSource = environment.eventSource;
+    // console.log(this.eventSource[0]);
+   
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   trigger,
   style,
@@ -8,6 +8,8 @@ import {
   stagger
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-tab1',
@@ -37,77 +39,17 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class Tab1Page {
-  notices = [
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'noticia',
-      description: 'descripcion de la noticia',
-      time: '2d'
-    }
-  ];
+export class Tab1Page implements OnInit {
 
-  constructor(private router: Router) {}
+  notices;
+  constructor(private router: Router, private firebaseService: FirebaseService) {}
 
   viewDetail(id: number) {
     this.router.navigate(['dashboard/tabs/productDetail/' + id]);
+  }
+
+  ngOnInit(): void {
+    this.firebaseService.getNews().subscribe(data =>
+      this.notices = data);
   }
 }

@@ -8,6 +8,8 @@ import {
   stagger
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { FirebaseService } from '../services/firebase.service';
 @Component({
   selector: 'app-actividades',
   templateUrl: './actividades.page.html',
@@ -37,54 +39,16 @@ import { Router } from '@angular/router';
   ]
 })
 export class ActividadesPage implements OnInit {
-  classes = [
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'actividad 1',
-      description: 'descripcion de la actividad',
-      hours: 'L-X-V (19:00:20:00)'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'actividad 1',
-      description: 'descripcion de la actividad',
-      hours: 'L-X-V (19:00:20:00)'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'actividad 1',
-      description: 'descripcion de la actividad',
-      hours: 'L-X-V (19:00:20:00)'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'actividad 1',
-      description: 'descripcion de la actividad',
-      hours: 'L-X-V (19:00:20:00)'
-    },
-    {
-      id: 1,
-      thumb:
-        'https://s3.amazonaws.com/ionic-marketplace/ionic-3-start-theme/screenshot_1.png',
-      name: 'actividad 1',
-      description: 'descripcion de la actividad',
-      hours: 'L-X-V (19:00:20:00)'
-    },
-  ];
+  classes;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private firebaseService: FirebaseService) {}
 
   viewDetail(id: number) {
     this.router.navigate(['dashboard/tabs/actividadDetail/' + id]);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.firebaseService.getClasses().subscribe(data =>
+      this.classes = data);
+  }
 }
