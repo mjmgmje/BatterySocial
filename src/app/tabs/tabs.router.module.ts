@@ -115,6 +115,44 @@ const routes: Routes = [
             loadChildren: '../club-lectura/libro-detail/libro-detail.module#LibroDetailPageModule'
           }
         ]
+      },
+
+      //////
+      {
+        path: 'AddNew',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab1/add-new/add-new.module#AddNewPageModule'
+          }
+        ]
+      },
+      {
+        path: 'AddActivity',
+        children: [
+          {
+            path: '',
+            loadChildren: '../actividades/add-activity/add-activity.module#AddActivityPageModule'
+          }
+        ]
+      },
+      {
+        path: 'AddBook',
+        children: [
+          {
+            path: '',
+            loadChildren: '../club-lectura/add-book/add-book.module#AddBookPageModule'
+          }
+        ]
+      },
+      {
+        path: 'AddConcert',
+        children: [
+          {
+            path: '',
+            loadChildren: '../conciertos/add-concert/add-concert.module#AddConcertPageModule'
+          }
+        ]
       }
     ]
   }

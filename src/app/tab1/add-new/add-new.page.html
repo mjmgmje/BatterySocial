@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary"
+    ><ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/dashboard/tabs/tab1"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+      </ion-buttons>
+      <ion-title>Añadir Noticia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="addNew()">
+    <ion-item>
+      <ion-label>Titulo</ion-label>
+      <ion-input type="text" [(ngModel)]="todo.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Noticia</ion-label>
+      <ion-textarea [(ngModel)]="todo.new" name="new"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>URL de imagen</ion-label>
+      <ion-textarea [(ngModel)]="todo.thumb" name="thumb"></ion-textarea>
+    </ion-item>
+    <ion-button color="dark" type="submit" block>Add Todo</ion-button>
+  </form>
+</ion-content>

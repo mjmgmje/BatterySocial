@@ -40,16 +40,23 @@ import { FirebaseService } from '../services/firebase.service';
   ]
 })
 export class Tab1Page implements OnInit {
-
   notices;
-  constructor(private router: Router, private firebaseService: FirebaseService) {}
+  isAdmin: string;
+  constructor(
+    private router: Router,
+    private firebaseService: FirebaseService
+  ) {}
 
   viewDetail(id: number) {
     this.router.navigate(['dashboard/tabs/productDetail/' + id]);
   }
 
   ngOnInit(): void {
-    this.firebaseService.getNews().subscribe(data =>
-      this.notices = data);
+    this.firebaseService.getNews().subscribe(data => (this.notices = data));
+    this.isAdmin = sessionStorage.getItem('isAdmin');
+  }
+
+  GoToAddNew() {
+    this.router.navigate(['dashboard/tabs/AddNew/']);
   }
 }

@@ -18,11 +18,24 @@ export class FirebaseService {
   private classes: Observable<any[]>;
   private newsCollection: AngularFirestoreCollection<any>;
   private news: Observable<any[]>;
+  private usersCollection: AngularFirestoreCollection<any>;
+  private users: Observable<any[]>;
 
-  constructor(db: AngularFirestore) {
+  constructor(private db: AngularFirestore) {
     this.booksCollection = db.collection<Book>('books');
 
     this.books = this.booksCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+    this.usersCollection = db.collection<any>('users');
+
+    this.users = this.usersCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -144,5 +157,19 @@ export class FirebaseService {
 
   removenew(id) {
     return this.newsCollection.doc(id).delete();
+  }
+
+  getUser(username: string) {
+    this.usersCollection = this.db.collection('users', ref => ref.where('username', '==', username));
+    this.users = this.usersCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+    return this.users;
   }
 }

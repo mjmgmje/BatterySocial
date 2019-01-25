@@ -13,9 +13,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: './public/register/register.module#RegisterPageModule'
-  },  { path: 'concierto-detail', loadChildren: './conciertos/concierto-detail/concierto-detail.module#ConciertoDetailPageModule' },
-  { path: 'libro-detail', loadChildren: './club-lectura/libro-detail/libro-detail.module#LibroDetailPageModule' },
-  { path: 'actividad-detail', loadChildren: './actividades/actividad-detail/actividad-detail.module#ActividadDetailPageModule' },
+  },
+
+  // { path: 'add-concert', loadChildren: './conciertos/add-concert/add-concert.module#AddConcertPageModule' },
+  // { path: 'add-activity', loadChildren: './actividades/add-activity/add-activity.module#AddActivityPageModule' },
+  // { path: 'add-book', loadChildren: './club-lectura/add-book/add-book.module#AddBookPageModule' },
 
 
 

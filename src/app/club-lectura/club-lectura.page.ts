@@ -11,6 +11,7 @@ import { Book } from '../models/book';
 })
 export class ClubLecturaPage implements OnInit {
 
+  isAdmin: string;
   books: Array<Book>;
 
   constructor(private router: Router, private firebaseService: FirebaseService) { }
@@ -18,10 +19,14 @@ export class ClubLecturaPage implements OnInit {
   ngOnInit() {
     this.firebaseService.getBooks().subscribe(data =>
       this.books = data);
+      this.isAdmin = sessionStorage.getItem('isAdmin');
   }
   viewDetail(id: number) {
     this.router.navigate(['dashboard/tabs/libroDetail/' + id]);
+  }
 
+  GoToAddBook() {
+    this.router.navigate(['dashboard/tabs/AddBook/']);
   }
 
 }

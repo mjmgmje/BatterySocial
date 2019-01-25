@@ -31,7 +31,7 @@ const colors: any = {
 })
 export class ConciertosPage implements OnInit {
   eventSource = [];
-
+  isAdmin: string;
   eventSelected: any;
   viewTitle: string;
   selectedDay = new Date();
@@ -90,6 +90,9 @@ export class ConciertosPage implements OnInit {
   ngOnInit(): void {
     // this.eventSource = environment.eventSource;
     // console.log(this.eventSource[0]);
-   
+    this.isAdmin = sessionStorage.getItem('isAdmin');
+  }
+  GoToAddConcert() {
+    this.router.navigate(['dashboard/tabs/AddConcert/']);
   }
 }
