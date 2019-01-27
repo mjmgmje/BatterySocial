@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+        <ion-back-button
+        defaultHref="/dashboard/tabs/club-lectura"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+      </ion-buttons>
+    <ion-title class="text-center">{{ libroToShow.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img
+    class="img-center"
+    src="{{ libroToShow.thumb }}"
+    height="50%"
+    width="50%"
+  />
+  <h4 class="text-center">{{ libroToShow.name }}</h4>
+  <div>{{ libroToShow.description }}</div>
+  <hr>
+  <br>
+  <h5 class="text-center">Comentarios</h5>
+  <!-- <ion-list>
+  <ion-item class="text-muted" *ngFor="let comment of libroToShow.comments">
+    <ion-avatar slot="start">
+      <img src="{{ comment.photo }}">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ comment.nombre }}</h2>
+      <p>{{ comment.comment }}</p>
+    </ion-label>
+  </ion-item>
+  </ion-list> -->
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/dashboard/tabs/conciertos"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ conciertoToShow.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<img src="{{ conciertoToShow.photo }}" height="45%" width="100%" />
+<div>
+  <h4 class="text-center">{{ conciertoToShow.title }}</h4>
+  <br />
+  <h6 class="pad">
+    Hora: {{ start }} - {{ end }}
+  </h6>
+</div>
+<br />
+<ion-content padding> </ion-content>

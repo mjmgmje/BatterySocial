@@ -1,6 +1,14 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Club de lectura</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/dashboard/tabs/tab2"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-center">Club de lectura</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -28,4 +36,15 @@
       </div> -->
     </div>
   </div>
+  <ion-fab
+    *ngIf="isAdmin === 'true'"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    color="secondary"
+  >
+    <ion-fab-button tappable (click)="GoToAddBook()">
+      <ion-icon name="add" color="dark"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

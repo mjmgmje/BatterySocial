@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title >El bar</ion-title>
+  <ion-buttons slot="start">
+        <ion-back-button
+        defaultHref="/dashboard/tabs/tab2"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+      </ion-buttons>
+    <ion-title class="text-center">El bar</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="informations detail-bg">
+    <div class="information card" *ngFor="let information of informations" tappable (click)="viewDetail(information.id)" margin-bottom>
+        <div class="background border-bottom" [ngStyle]="{'background-image': 'url(' + information.thumb + ')'}">
+          <div class="background-filter rlt">
+            <div class="align-bottom" padding-left padding-right>
+              <h6 class="text-white text-center">{{ information.name }}</h6>
+              <!-- <h6 class="pull-right text-white" ion-text>{{ notice. }}</h6> -->
+              <div class="clear"></div>
+            </div>
+          </div>
+        </div>
+        <div class="padding-xm black-bg">
+          <p class="text-center text-white no-bottom" color="light">{{information.description}}</p>
+        </div>
+      </div>
 
 </ion-content>

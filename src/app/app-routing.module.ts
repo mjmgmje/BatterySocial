@@ -4,10 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'dashboard', canActivate: [AuthGuardService], loadChildren: './tabs/tabs.module#TabsPageModule' },
-  // { path: 'conciertos', loadChildren: './conciertos/conciertos.module#ConciertosPageModule' },
-  // { path: 'actividades', loadChildren: './actividades/actividades.module#ActividadesPageModule' },
-  // { path: 'club-lectura', loadChildren: './club-lectura/club-lectura.module#ClubLecturaPageModule' },
-  // { path: 'bar-info', loadChildren: './bar-info/bar-info.module#BarInfoPageModule' },
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
@@ -17,11 +14,13 @@ const routes: Routes = [
     path: 'register',
     loadChildren: './public/register/register.module#RegisterPageModule'
   },
-  // {
-  //   path: 'members',
-  //   canActivate: [AuthGuardService],
-  //   loadChildren: './members/member-routing.module#MemberRoutingModule'
-  // },
+
+  // { path: 'add-concert', loadChildren: './conciertos/add-concert/add-concert.module#AddConcertPageModule' },
+  // { path: 'add-activity', loadChildren: './actividades/add-activity/add-activity.module#AddActivityPageModule' },
+  // { path: 'add-book', loadChildren: './club-lectura/add-book/add-book.module#AddBookPageModule' },
+
+
+
 
 ];
 

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button
+        defaultHref="/dashboard/tabs/tab1"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-center">{{NewToShow.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+<img src="{{NewToShow.thumb}}" height="30%" width="100%">
+<h4>{{NewToShow.name}}</h4>
+<div>
+  {{NewToShow.new}}
+  </div>
+
+</ion-content>

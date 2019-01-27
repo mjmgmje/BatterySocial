@@ -3,14 +3,23 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+// import { FlatpickrModule } from 'angularx-flatpickr';
+// import { CalendarModule, DateAdapter } from 'angular-calendar';
+// import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+// import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 import { IonicModule } from '@ionic/angular';
 
 import { ConciertosPage } from './conciertos.page';
 
+
 // nuevos modulos para calendario
+import { NgCalendarModule  } from 'ionic2-calendar';
+
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
+
 
 
 const routes: Routes = [
@@ -26,13 +35,10 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    // nuevos import calendario
-    // BrowserAnimationsModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    }),
+    NgCalendarModule,
   ],
-  declarations: [ConciertosPage]
+  declarations: [ConciertosPage],
+  providers: [
+  ]
 })
 export class ConciertosPageModule {}

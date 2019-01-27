@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+        <ion-back-button
+        defaultHref="/dashboard/tabs/actividades"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+      </ion-buttons>
+    <ion-title class="text-center">{{ classToShow.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="{{ classToShow.thumb }}" height="30%" width="100%" />
+  <div>
+    <h6>{{ classToShow.description }}</h6>
+    <br />
+    <h6>Profesor: {{ classToShow.professor }}</h6>
+    <h6>Horario: {{ classToShow.hours }}</h6>
+  </div>
+  <br />
+  <ion-button color="light" class="btn-all">Asistire</ion-button>
+</ion-content>

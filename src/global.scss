@@ -21,6 +21,20 @@ $colors: (
   blue: #75c4fd,
 );
 
+ul{
+  padding-inline-start: 0px;
+}
+
+ion-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
 .primary-bg {
   background-color: #ffd11a !important;
 }
@@ -56,6 +70,9 @@ $colors: (
 }
 
 .light-bg {
+  background-color: #75c4fd;
+}
+.lightbg {
   background-color: #75c4fd;
 }
 

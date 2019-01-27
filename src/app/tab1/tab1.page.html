@@ -1,27 +1,46 @@
-<ion-header >
+<ion-header>
   <ion-toolbar color="primary">
-    <ion-title>
-      Tab One
-    </ion-title>
+    <ion-title class="text-center"> Noticias </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="notices detail-bg">
   <!--list of trips-->
-  <div class="notice card" *ngFor="let notice of notices" tappable (click)="viewDetail(notice.id)" margin-bottom>
-    <div class="background border-bottom" [ngStyle]="{'background-image': 'url(' + notice.thumb + ')'}">
-      <div class="background-filter rlt">
-        <div class="align-bottom" padding-left padding-right>
-          <h6 class="pull-left text-white">{{ notice.name }}</h6>
-          <!-- <h6 class="pull-right text-white" ion-text>{{ notice. }}</h6> -->
-          <div class="clear"></div>
+  <ul [@listStagger]="notices">
+    <li
+      class="notice card"
+      *ngFor="let notice of notices"
+      tappable
+      (click)="viewDetail(notice.id)"
+      margin-bottom
+    >
+      <div
+        class="background border-bottom"
+        [ngStyle]="{ 'background-image': 'url(' + notice.thumb + ')' }"
+      >
+        <div class="background-filter rlt">
+          <div class="align-bottom" padding-left padding-right>
+            <h6 class="pull-left text-white">{{ notice.name }}</h6>
+            <!-- <h6 class="pull-right text-white" ion-text>{{ notice. }}</h6> -->
+            <div class="clear"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="padding-sm black-bg">
-      <ion-icon name="time" class="text-white"></ion-icon>
-      <ion-text class="text-white">{{ notice.time }}</ion-text>
-      <ion-text class="pull-right text-white" color="light">{{notice.description}}</ion-text>
-    </div>
-  </div>
+      <div class="padding-xm black-bg">
+        <ion-icon name="time" class="text-white"></ion-icon>
+        <ion-text class="text-white">{{ notice.time }}</ion-text>
+      </div>
+    </li>
+  </ul>
+  <ion-fab
+    *ngIf="isAdmin === 'true'"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    color="secondary"
+  >
+    <ion-fab-button tappable (click)="GoToAddNew()">
+      <ion-icon name="add" color="dark"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
