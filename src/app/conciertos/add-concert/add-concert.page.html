@@ -2,7 +2,7 @@
   <ion-toolbar color="primary"
     ><ion-buttons slot="start">
       <ion-back-button
-        defaultHref="/dashboard/tabs/tab1"
+        defaultHref="/dashboard/tabs/conciertos"
         text="Back"
         icon="ios-arrow-back"
         color="dark"
@@ -12,4 +12,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding> </ion-content>
+<ion-content padding>
+  <form [formGroup]="FormConcert" (ngSubmit)="addConcert(FormConcert.value)">
+    <ion-item>
+      <ion-label>Titulo</ion-label>
+      <ion-input type="text" formControlName="title" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora de Inicio</ion-label>
+      <ion-datetime formControlName="startTime" display-format="DD/MMM, YYYY HH:mm"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora de Fin</ion-label>
+      <ion-datetime formControlName="endTime" display-format="DD/MMM, YYYY HH:mm"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>URL de imagen</ion-label>
+      <ion-textarea formControlName="photo" name="thumb"></ion-textarea>
+    </ion-item>
+    <ion-button color="dark" type="submit" block>Crear Concierto</ion-button>
+  </form>
+</ion-content>

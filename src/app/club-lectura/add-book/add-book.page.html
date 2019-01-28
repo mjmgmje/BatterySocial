@@ -2,7 +2,7 @@
   <ion-toolbar color="primary"
     ><ion-buttons slot="start">
       <ion-back-button
-        defaultHref="/dashboard/tabs/tab1"
+        defaultHref="/dashboard/tabs/club-lectura"
         text="Back"
         icon="ios-arrow-back"
         color="dark"
@@ -12,4 +12,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding> </ion-content>
+<ion-content padding>
+  <form [formGroup]="FormBook" (ngSubmit)="addBook(FormBook.value)">
+    <ion-item>
+      <ion-label>Titulo</ion-label>
+      <ion-input type="text" formControlName="name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripcion</ion-label>
+      <ion-textarea formControlName="description" name="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>URL de imagen</ion-label>
+      <ion-textarea formControlName="thumb" name="thumb"></ion-textarea>
+    </ion-item>
+    <ion-button color="dark" type="submit" block>Crear Libro</ion-button>
+  </form>
+</ion-content>
+

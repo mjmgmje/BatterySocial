@@ -9,7 +9,7 @@ import { New } from 'src/app/models/new';
 })
 export class AddNewPage implements OnInit {
   todo: New;
-
+  objectpass: Object;
   constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit() {
@@ -18,6 +18,7 @@ export class AddNewPage implements OnInit {
 
   addNew() {
     this.todo.time = '2d';
-    this.firebaseService.addnew(this.todo);
+    const data = JSON.parse(JSON.stringify(this.todo));
+    this.firebaseService.addnew(data);
   }
 }

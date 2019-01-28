@@ -45,8 +45,6 @@ export class ConciertosPage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private firebaseService: FirebaseService
-    // private modalCtrl: ModalController,
-    // private alertCtrl: AlertController
   ) {
     moment.locale('es');
     this.firebaseService.getConcerts().subscribe(data => {
