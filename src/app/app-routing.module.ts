@@ -4,16 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'dashboard', canActivate: [AuthGuardService], loadChildren: './tabs/tabs.module#TabsPageModule' },
-
+  {
+    path: 'register',
+    loadChildren: './public/register/register.module#RegisterPageModule'
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: './public/login/login.module#LoginPageModule'
   },
-  {
-    path: 'register',
-    loadChildren: './public/register/register.module#RegisterPageModule'
-  },  { path: 'change-pass', loadChildren: './tab3/change-pass/change-pass.module#ChangePassPageModule' },
+  { path: 'change-pass', loadChildren: './tab3/change-pass/change-pass.module#ChangePassPageModule' },
   { path: 'change-profile', loadChildren: './tab3/change-profile/change-profile.module#ChangeProfilePageModule' },
   { path: 'info', loadChildren: './tab3/info/info.module#InfoPageModule' },
 

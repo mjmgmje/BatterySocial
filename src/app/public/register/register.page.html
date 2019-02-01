@@ -1,12 +1,28 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
         <ion-back-button defaultHref="/login"></ion-back-button>
     </ion-buttons>
-    <ion-title>Register</ion-title>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
  
 <ion-content padding>
- 
+    <ion-item>
+        <ion-label>URL de Imagen de usuario</ion-label>
+        <ion-input [(ngModel)]="img" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Nombre de Usuario</ion-label>
+        <ion-input [(ngModel)]="username" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Contraseña</ion-label>
+        <ion-input [(ngModel)]="newpass" type="password" required></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Confirmar contraseña</ion-label>
+        <ion-input [(ngModel)]="newpass2" type="password" required></ion-input>
+      </ion-item>
+      <ion-button class="btn-all" (click)="create()">Registrarse</ion-button>
 </ion-content>

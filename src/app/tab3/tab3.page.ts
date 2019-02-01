@@ -12,7 +12,7 @@ export class Tab3Page {
 
   username: string;
 
-  constructor(private router: Router, private firebaseService: FirebaseService) {}
+  constructor(private authSevice: AuthenticationService, private router: Router, private firebaseService: FirebaseService) {}
 
   ionViewWillEnter() {
     this.firebaseService

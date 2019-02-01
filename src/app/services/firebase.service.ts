@@ -214,6 +214,10 @@ export class FirebaseService {
     return this.usersCollection.doc(id).update(User);
   }
 
+  adduser(User: any) {
+    return this.usersCollection.add(User);
+  }
+
   // getnew(id) {
   //   return this.newsCollection.doc<Book>(id).valueChanges();
   // }

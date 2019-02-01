@@ -7,18 +7,18 @@
   <ion-input
     class="mt-2"
     [formControl]="Username$"
-    placeholder="Username"
+    placeholder="Nombre de usuario"
     class="text-center"
   ></ion-input>
   <ion-input
     [formControl]="Password$"
-    placeholder="Password"
+    placeholder="Contraseña"
     class="text-center"
     type="password"
   ></ion-input>
 
   <ion-button class="mt-3" (click)="login()" expand="block">Login</ion-button>
-  <ion-button expand="block" href="/register" routerDirection="forward"
-    >Register</ion-button
+  <ion-button expand="block" (click)="GoToRegister()" routerDirection="forward"
+    >Registrarse</ion-button
   >
 </ion-content>
