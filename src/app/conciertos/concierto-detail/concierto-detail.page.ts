@@ -9,7 +9,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './concierto-detail.page.html',
   styleUrls: ['./concierto-detail.page.scss'],
 })
-export class ConciertoDetailPage implements OnInit {
+export class ConciertoDetailPage  {
   conciertoToShow: any;
   start: string;
   end: string;
@@ -17,7 +17,7 @@ export class ConciertoDetailPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private firebaseService: FirebaseService) { }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const param1 = String(params.get('paramId'));
       this.firebaseService.getConcert(param1).subscribe(data => {

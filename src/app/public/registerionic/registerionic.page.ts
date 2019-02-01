@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './registerionic.page.html',
   styleUrls: ['./registerionic.page.scss'],
 })
-export class RegisterionicPage implements OnInit {
+export class RegisterionicPage  {
 
   constructor() { }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
   }
 
 }

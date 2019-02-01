@@ -7,12 +7,12 @@ import { New } from 'src/app/models/new';
   templateUrl: './add-new.page.html',
   styleUrls: ['./add-new.page.scss']
 })
-export class AddNewPage implements OnInit {
+export class AddNewPage  {
   todo: New;
   objectpass: Object;
   constructor(private firebaseService: FirebaseService) {}
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
     this.todo = new New();
   }
 

@@ -38,7 +38,7 @@ import { FirebaseService } from '../services/firebase.service';
     ])
   ]
 })
-export class ActividadesPage implements OnInit {
+export class ActividadesPage  {
   classes;
   isAdmin: string;
   constructor(
@@ -50,7 +50,7 @@ export class ActividadesPage implements OnInit {
     this.router.navigate(['dashboard/tabs/actividadDetail/' + id]);
   }
 
-  ngOnInit(): void {
+  ionViewWillEnter(): void {
     this.firebaseService.getClasses().subscribe(data => (this.classes = data));
     this.isAdmin = sessionStorage.getItem('isAdmin');
   }

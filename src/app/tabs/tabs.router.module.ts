@@ -153,7 +153,35 @@ const routes: Routes = [
             loadChildren: '../conciertos/add-concert/add-concert.module#AddConcertPageModule'
           }
         ]
-      }
+      },
+      {
+        path: 'Info',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab3/info/info.module#InfoPageModule'
+          }
+        ]
+      },
+      {
+        path: 'ChangePass',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab3/change-pass/change-pass.module#ChangePassPageModule'
+          }
+        ]
+      },
+      {
+        path: 'ChangeProfile',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tab3/change-profile/change-profile.module#ChangeProfilePageModule'
+          }
+        ]
+      },
+
     ]
   }
   //     ,{

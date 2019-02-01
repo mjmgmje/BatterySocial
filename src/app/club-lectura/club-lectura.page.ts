@@ -9,14 +9,14 @@ import { Book } from '../models/book';
   templateUrl: './club-lectura.page.html',
   styleUrls: ['./club-lectura.page.scss'],
 })
-export class ClubLecturaPage implements OnInit {
+export class ClubLecturaPage  {
 
   isAdmin: string;
   books: Array<Book>;
 
   constructor(private router: Router, private firebaseService: FirebaseService) { }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
     this.firebaseService.getBooks().subscribe(data =>
       this.books = data);
       this.isAdmin = sessionStorage.getItem('isAdmin');

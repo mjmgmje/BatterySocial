@@ -6,6 +6,7 @@ import {
 import { Book } from '../models/book';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { New } from '../models/new';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,10 +17,12 @@ export class FirebaseService {
   private concerts: Observable<any[]>;
   private classesCollection: AngularFirestoreCollection<any>;
   private classes: Observable<any[]>;
-  private newsCollection: AngularFirestoreCollection<any>;
-  private news: Observable<any[]>;
+  private newsCollection: AngularFirestoreCollection<New>;
+  private news: Observable<New[]>;
   private usersCollection: AngularFirestoreCollection<any>;
   private users: Observable<any[]>;
+  private usersCommentsCollection: AngularFirestoreCollection<any>;
+  private usersComments: Observable<any[]>;
 
   constructor(private db: AngularFirestore) {
     this.booksCollection = db.collection<Book>('books');
@@ -36,6 +39,18 @@ export class FirebaseService {
     this.usersCollection = db.collection<any>('users');
 
     this.users = this.usersCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
+    this.usersCommentsCollection = db.collection<any>('usersComments');
+
+    this.usersComments = this.usersCommentsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -160,8 +175,8 @@ export class FirebaseService {
   }
 
   getUser(username: string) {
-    this.usersCollection = this.db.collection('users', ref => ref.where('username', '==', username));
-    this.users = this.usersCollection.snapshotChanges().pipe(
+    const usersCollectionByUsername = this.db.collection('users', ref => ref.where('username', '==', username));
+    const usersByUsername = usersCollectionByUsername.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -170,6 +185,48 @@ export class FirebaseService {
         });
       })
     );
-    return this.users;
+    return usersByUsername;
   }
+
+  getUserID(id) {
+    return this.usersCollection.doc(id).valueChanges();
+  }
+
+  getUsersCommentsFromBook(Id: string) {
+    this.usersCommentsCollection = this.db.collection('usersComments', ref => ref.where('bookid', '==', Id));
+    this.usersComments = this.usersCommentsCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+    return this.usersComments;
+  }
+
+  addComment(comment: any) {
+    return this.usersCommentsCollection.add(comment);
+  }
+
+  updateuser(User: any, id: string) {
+    return this.usersCollection.doc(id).update(User);
+  }
+
+  // getnew(id) {
+  //   return this.newsCollection.doc<Book>(id).valueChanges();
+  // }
+
+  // updatenew(New: any, id: string) {
+  //   return this.newsCollection.doc(id).update(New);
+  // }
+
+  // addnew(New: any) {
+  //   return this.newsCollection.add(New);
+  // }
+
+  // removenew(id) {
+  //   return this.newsCollection.doc(id).delete();
+  // }
 }

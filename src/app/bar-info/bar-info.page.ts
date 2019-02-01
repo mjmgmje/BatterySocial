@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './bar-info.page.html',
   styleUrls: ['./bar-info.page.scss']
 })
-export class BarInfoPage implements OnInit {
+export class BarInfoPage  {
   informations = [
     {
       id: 1,
@@ -20,5 +20,5 @@ export class BarInfoPage implements OnInit {
 
   viewDetail(id: number) {}
 
-  ngOnInit() {}
+  ionViewWillEnter(): void {}
 }

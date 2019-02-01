@@ -8,7 +8,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './actividad-detail.page.html',
   styleUrls: ['./actividad-detail.page.scss']
 })
-export class ActividadDetailPage implements OnInit {
+export class ActividadDetailPage {
   classToShow: any;
 
   constructor(
@@ -16,7 +16,7 @@ export class ActividadDetailPage implements OnInit {
     private firebaseService: FirebaseService
   ) {}
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const param1 = String(params.get('paramId'));
       this.firebaseService

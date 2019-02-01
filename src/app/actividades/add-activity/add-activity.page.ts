@@ -7,7 +7,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './add-activity.page.html',
   styleUrls: ['./add-activity.page.scss'],
 })
-export class AddActivityPage implements OnInit {
+export class AddActivityPage  {
   FormActivity: FormGroup;
   constructor(private fb: FormBuilder,
     private firebaseService: FirebaseService) {
@@ -20,7 +20,7 @@ export class AddActivityPage implements OnInit {
       });
      }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
   }
 
   addActivity(value) {

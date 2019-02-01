@@ -9,7 +9,7 @@ import { Book } from '../../models/book';
   templateUrl: './add-book.page.html',
   styleUrls: ['./add-book.page.scss'],
 })
-export class AddBookPage implements OnInit {
+export class AddBookPage  {
 
   FormBook: FormGroup;
 
@@ -22,7 +22,7 @@ export class AddBookPage implements OnInit {
       });
      }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
   }
 
   addBook(value: Book) {

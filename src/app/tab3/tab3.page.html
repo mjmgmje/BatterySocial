@@ -6,15 +6,25 @@
 
 <ion-content>
   <div class="ProfileSettings light-bg">
-    <ion-icon name="contact" class="text-white medium-size"></ion-icon>
-    <ion-text class="text-white"> Username </ion-text>
-    <ion-icon
-      class="pull-right text-white medium-size"
-      name="settings"
-    ></ion-icon>
+    <ion-fab horizontal="start">
+      <ion-fab-button (click)="GotoChangeProfile()" name="settings" color="light">
+        <ion-icon name="contact" class="text-white medium-size"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-text class="text-white"> {{username}} </ion-text>
+    <ion-fab horizontal="end">
+      <ion-fab-button name="settings" color="light"
+        ><ion-icon name="settings"></ion-icon
+      ></ion-fab-button>
+      <ion-fab-list side="bottom" color="dark">
+        <ion-fab-button (click)="logout()"><ion-icon name="log-out"></ion-icon></ion-fab-button>
+        <ion-fab-button (click)="GotoChangePass()"><ion-icon name="lock"></ion-icon></ion-fab-button>
+        <ion-fab-button (click)="GoToInfo()"><ion-icon name="information-circle"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
   </div>
   <div class="Profile">
-    <ion-text><strong>NAME</strong></ion-text>
+    <ion-text><strong>{{username}}</strong></ion-text>
     <ion-text>Nº SOCIO</ion-text>
   </div>
   <div class="PointsTitle grey-bg">

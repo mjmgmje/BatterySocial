@@ -8,14 +8,14 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './new-detail.page.html',
   styleUrls: ['./new-detail.page.scss'],
 })
-export class NewDetailPage implements OnInit {
+export class NewDetailPage  {
 
   NewToShow: any;
   news = environment.news;
 
   constructor(private route: ActivatedRoute, private firebaseService: FirebaseService) { }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const param1 = String(params.get('paramId'));
       this.firebaseService.getnew(param1).subscribe(New =>

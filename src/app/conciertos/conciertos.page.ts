@@ -29,7 +29,7 @@ const colors: any = {
   templateUrl: './conciertos.page.html',
   styleUrls: ['./conciertos.page.scss']
 })
-export class ConciertosPage implements OnInit {
+export class ConciertosPage  {
   eventSource = [];
   isAdmin: string;
   eventSelected: any;
@@ -85,7 +85,7 @@ export class ConciertosPage implements OnInit {
     this.selectedDay = ev.selectedTime;
 
   }
-  ngOnInit(): void {
+  ionViewWillEnter(): void {
     // this.eventSource = environment.eventSource;
     // console.log(this.eventSource[0]);
     this.isAdmin = sessionStorage.getItem('isAdmin');

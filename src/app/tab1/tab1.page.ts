@@ -39,7 +39,7 @@ import { FirebaseService } from '../services/firebase.service';
     ])
   ]
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page {
   notices;
   isAdmin: string;
   constructor(
@@ -51,7 +51,7 @@ export class Tab1Page implements OnInit {
     this.router.navigate(['dashboard/tabs/productDetail/' + id]);
   }
 
-  ngOnInit(): void {
+  ionViewWillEnter(): void {
     this.firebaseService.getNews().subscribe(data => (this.notices = data));
     this.isAdmin = sessionStorage.getItem('isAdmin');
   }

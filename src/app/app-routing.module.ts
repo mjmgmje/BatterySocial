@@ -13,7 +13,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: './public/register/register.module#RegisterPageModule'
-  },
+  },  { path: 'change-pass', loadChildren: './tab3/change-pass/change-pass.module#ChangePassPageModule' },
+  { path: 'change-profile', loadChildren: './tab3/change-profile/change-profile.module#ChangeProfilePageModule' },
+  { path: 'info', loadChildren: './tab3/info/info.module#InfoPageModule' },
+
 
   // { path: 'add-concert', loadChildren: './conciertos/add-concert/add-concert.module#AddConcertPageModule' },
   // { path: 'add-activity', loadChildren: './actividades/add-activity/add-activity.module#AddActivityPageModule' },

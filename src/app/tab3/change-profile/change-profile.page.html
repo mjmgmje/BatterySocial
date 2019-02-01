@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button
+        defaultHref="/dashboard/tabs/tab3"
+        text="Back"
+        icon="ios-arrow-back"
+        color="dark"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-center">Cambiar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+  <img src="{{img}}" class="mb-1">
+</ion-item>
+<ion-item>
+  <ion-input [(ngModel)] = "username" type="text"></ion-input>
+  <ion-button (click)="change()">Cambiar</ion-button>
+</ion-item>
+</ion-content>

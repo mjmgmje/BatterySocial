@@ -9,7 +9,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './add-concert.page.html',
   styleUrls: ['./add-concert.page.scss'],
 })
-export class AddConcertPage implements OnInit {
+export class AddConcertPage  {
   FormConcert: FormGroup;
   startTime: string;
 
@@ -23,7 +23,7 @@ export class AddConcertPage implements OnInit {
     });
    }
 
-  ngOnInit() {
+  ionViewWillEnter(): void {
   }
 
   addConcert(value: Concierto) {
