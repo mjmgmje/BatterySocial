@@ -15,8 +15,8 @@ export class ChangeProfilePage {
 
   ionViewWillEnter() {
     this.firebaseService.getUserID(sessionStorage.getItem('userid')).subscribe(data => {
-      this.img = data.img;
-      this.username = data.username;
+      this.img = (data as any).img;
+      this.username = (data as any).username;
     });
   }
   change() {

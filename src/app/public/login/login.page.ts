@@ -26,10 +26,10 @@ export class LoginPage {
   login() {
     this.firebaseService.getUser(this.Username$.value).subscribe(user => {
       if (user[0]) {
-        if (user[0].password === sha256(this.Password$.value)) {
+        if ((user[0] as any).password === sha256(this.Password$.value)) {
           this.authService.login();
-          sessionStorage.setItem('isAdmin', user[0].isAdmin);
-          sessionStorage.setItem('userid', user[0].id);
+          sessionStorage.setItem('isAdmin', (user[0] as any).isAdmin);
+          sessionStorage.setItem('userid', (user[0] as any).id);
         }
       }
     });

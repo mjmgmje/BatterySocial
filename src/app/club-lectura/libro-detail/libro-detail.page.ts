@@ -39,8 +39,8 @@ export class LibroDetailPage {
       data.forEach(Uscom =>
         this.firebaseService.getUserID(Uscom.userid).subscribe(user => {
           const comentario = {
-            photo: user.img,
-            nombre: user.username,
+            photo: (user as any).img,
+            nombre: (user as any).username,
             comment: Uscom.comment
           };
           if (!(this.comments.includes(comentario))) {

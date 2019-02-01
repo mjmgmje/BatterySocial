@@ -20,7 +20,7 @@ export class ChangePassPage {
     this.firebaseService
       .getUserID(sessionStorage.getItem('userid'))
       .subscribe(data => {
-        this.realoldpass = data.password;
+        this.realoldpass = (data as any).password;
       });
   }
 

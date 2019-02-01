@@ -18,7 +18,7 @@ export class Tab3Page {
     this.firebaseService
       .getUserID(sessionStorage.getItem('userid'))
       .subscribe(data => {
-        this.username = data.username;
+        this.username = (data as any).username;
       });
   }
 
