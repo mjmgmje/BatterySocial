@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FirebaseService } from '../services/firebase.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tab1',
@@ -42,6 +43,7 @@ import { FirebaseService } from '../services/firebase.service';
 export class Tab1Page {
   notices;
   isAdmin: string;
+  unsub: Subscription;
   constructor(
     private router: Router,
     private firebaseService: FirebaseService
@@ -52,8 +54,12 @@ export class Tab1Page {
   }
 
   ionViewWillEnter(): void {
-    this.firebaseService.getNews().subscribe(data => (this.notices = data));
+    this.unsub = this.firebaseService.getNews().subscribe(data => (this.notices = data));
     this.isAdmin = sessionStorage.getItem('isAdmin');
+  }
+
+  ionViewDidLeave(): void {
+    this.unsub.unsubscribe();
   }
 
   GoToAddNew() {

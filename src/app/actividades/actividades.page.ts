@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FirebaseService } from '../services/firebase.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-actividades',
   templateUrl: './actividades.page.html',
@@ -41,6 +42,8 @@ import { FirebaseService } from '../services/firebase.service';
 export class ActividadesPage  {
   classes;
   isAdmin: string;
+  unsub: Subscription;
+
   constructor(
     private router: Router,
     private firebaseService: FirebaseService
@@ -51,8 +54,12 @@ export class ActividadesPage  {
   }
 
   ionViewWillEnter(): void {
-    this.firebaseService.getClasses().subscribe(data => (this.classes = data));
+    this.unsub = this.firebaseService.getClasses().subscribe(data => (this.classes = data));
     this.isAdmin = sessionStorage.getItem('isAdmin');
+  }
+
+  ionViewDidLeave(): void {
+    this.unsub.unsubscribe();
   }
   GoToAddActivity() {
     this.router.navigate(['dashboard/tabs/AddActivity/']);

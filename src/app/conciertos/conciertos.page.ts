@@ -7,6 +7,7 @@ import { AlertController, ModalController, NavController } from '@ionic/angular'
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FirebaseService } from '../services/firebase.service';
+import { Observable, Subscription } from 'rxjs';
 
 
 
@@ -35,7 +36,7 @@ export class ConciertosPage  {
   eventSelected: any;
   viewTitle: string;
   selectedDay = new Date();
-
+  unsub: Subscription;
   calendar = {
     mode: 'month',
     currentDate: new Date()
@@ -47,7 +48,7 @@ export class ConciertosPage  {
     private firebaseService: FirebaseService
   ) {
     moment.locale('es');
-    this.firebaseService.getConcerts().subscribe(data => {
+    this.unsub = this.firebaseService.getConcerts().subscribe(data => {
     data.forEach(elem => {
         elem.startTime = new Date(elem.startTime.seconds * 1000);
         elem.endTime = new Date(elem.endTime.seconds * 1000);
@@ -61,6 +62,10 @@ export class ConciertosPage  {
   onViewTitleChanged(title) {
     moment.locale('es');
     this.viewTitle = title;
+  }
+
+  ionViewDidLeave(): void {
+    this.unsub.unsubscribe();
   }
 
   onEventSelected(event) {

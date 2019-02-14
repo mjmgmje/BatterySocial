@@ -47,7 +47,6 @@ export class ChangePassPage {
       backdropDismiss: true
     });
     await alert.present();
-
   }
 
     async oldPasswordAlert() {
