@@ -54,8 +54,10 @@ export class Tab1Page {
   }
 
   ionViewWillEnter(): void {
+    if (!this.notices) {
     this.unsub = this.firebaseService.getNews().subscribe(data => (this.notices = data));
     this.isAdmin = sessionStorage.getItem('isAdmin');
+    }
   }
 
   ionViewDidLeave(): void {

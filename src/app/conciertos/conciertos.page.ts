@@ -48,14 +48,15 @@ export class ConciertosPage  {
     private firebaseService: FirebaseService
   ) {
     moment.locale('es');
-    this.unsub = this.firebaseService.getConcerts().subscribe(data => {
-    data.forEach(elem => {
-        elem.startTime = new Date(elem.startTime.seconds * 1000);
-        elem.endTime = new Date(elem.endTime.seconds * 1000);
+    if (!this.eventSource) {
+      this.unsub = this.firebaseService.getConcerts().subscribe(data => {
+      data.forEach(elem => {
+         elem.startTime = new Date(elem.startTime.seconds * 1000);
+          elem.endTime = new Date(elem.endTime.seconds * 1000);
+        });
+      this.eventSource = data;
       });
-    this.eventSource = data;
-    });
-
+    }
   }
 
 

@@ -27,9 +27,12 @@ export class LoginPage {
     this.firebaseService.getUser(this.Username$.value).subscribe(user => {
       if (user[0]) {
         if ((user[0] as any).password === sha256(this.Password$.value)) {
-          this.authService.login();
           sessionStorage.setItem('isAdmin', (user[0] as any).isAdmin);
           sessionStorage.setItem('userid', (user[0] as any).id);
+          const jwt = this.authService.generateJWT((user[0] as any).id);
+          this.authService.login(jwt);
+          (user[0] as any).token = jwt;
+          this.firebaseService.updateuser(user[0], (user[0] as any).id).then();
         }
       }
     });
@@ -37,4 +40,6 @@ export class LoginPage {
   GoToRegister() {
     this.router.navigate(['register/']);
   }
+
+
 }

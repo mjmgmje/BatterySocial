@@ -19,9 +19,11 @@ export class ClubLecturaPage  {
   constructor(private router: Router, private firebaseService: FirebaseService) { }
 
   ionViewWillEnter(): void {
+    if (!this.books) {
     this.unsub = this.firebaseService.getBooks().subscribe(data =>
       this.books = data);
       this.isAdmin = sessionStorage.getItem('isAdmin');
+    }
   }
   viewDetail(id: number) {
     this.router.navigate(['dashboard/tabs/libroDetail/' + id]);

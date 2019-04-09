@@ -188,6 +188,20 @@ export class FirebaseService {
     return usersByUsername;
   }
 
+  getUserByToken(token: string) {
+    const usersCollectionByUsername = this.db.collection('users', ref => ref.where('token', '==', token));
+    const usersByToken = usersCollectionByUsername.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+    return usersByToken;
+  }
+
   getUserID(id) {
     return this.usersCollection.doc(id).valueChanges();
   }

@@ -54,8 +54,10 @@ export class ActividadesPage  {
   }
 
   ionViewWillEnter(): void {
+    if (!this.classes) {
     this.unsub = this.firebaseService.getClasses().subscribe(data => (this.classes = data));
     this.isAdmin = sessionStorage.getItem('isAdmin');
+    }
   }
 
   ionViewDidLeave(): void {
